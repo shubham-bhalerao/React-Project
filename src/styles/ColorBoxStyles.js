@@ -27,16 +27,16 @@ export default {
    },
    copyText: {
       color: props =>
-         chroma.contrast(props.background, "black") < 6 ? "black" : "white"
+         chroma.contrast(props.background, "black") < 6 ? "black" : "rgba(255,255,255,0.8)"
    },
    colorName: {
       color: props =>
-         chroma.contrast(props.background, "black") < 6 ? "white" : "black"
+         chroma.contrast(props.background, "black") < 6 ? "rgba(255,255,255,0.8)" : "rgba(0,0,0,0.6)"
    },
    seeMore: {
       color: props =>
          chroma.contrast(props.background, "black") < 6
-            ? "white"
+            ? "rgba(255,255,255,0.8)"
             : "rgba(0,0,0,0.6)",
       background: "rgba(255, 255, 255, 0.3)",
       position: "absolute",
@@ -130,7 +130,9 @@ export default {
       "& p": {
          fontSize: "2rem",
          fontWeight: "100"
-      }
+      },
+      zIndex: "-5" //bug when cursor at middle of the page it shows copy text of last
+
    },
    showMessage: {
       opacity: "1",

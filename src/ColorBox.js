@@ -16,9 +16,16 @@ class ColorBox extends Component {
       });
    }
 
+   generateRandomCopyText() {
+      const words = ["COPIED!", "PASTE ME!", "PANDA STYLE!", "IT'LL ROCK!", "GOT IT!"];
+      const r = Math.floor(Math.random() * words.length);
+      return words[r];
+   }
+
    render() {
       const { background, name, moreUrl, showLink, classes } = this.props;
       const { copied } = this.state;
+      const msg = this.generateRandomCopyText();
       return (
          <CopyToClipboard text={background} onCopy={this.changeCopyState}>
             <div
@@ -34,7 +41,7 @@ class ColorBox extends Component {
                   className={`${classes.copyMessage} ${copied &&
                      classes.showMessage}`}
                >
-                  <h1>copied!</h1>
+                  <h1>{msg}</h1>
                   <p>{background}</p>
                </div>
                <div>
